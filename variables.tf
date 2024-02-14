@@ -9,3 +9,15 @@ variable "instance_type" {
   default = "t2.micro"
   type = string
 }
+
+variable "region" {
+  description = "Region of deployment"
+  default = "ap-southeast-2"
+  type = string
+}
+
+variable "availability_zone" {
+  description = "AZ of deployment"
+  default = "ap-southeast-2a"
+  type = string
+}
