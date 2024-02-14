@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Terramino</title>
+    <title>Terramino - DEV</title>
     <style>
       html,
       body {
@@ -10,7 +10,6 @@
       }
 
       body {
-
         background-image: url("https://raw.githubusercontent.com/hashicorp/learn-terraform-circleci/master/assets/background.png");
         display: flex;
         align-items: center;
@@ -68,7 +67,7 @@
           name: name, // name of the piece (L, O, etc.)
           matrix: matrix, // the current rotation matrix
           row: row, // current row (starts offscreen)
-          col: col // current col
+          col: col, // current col
         };
       }
 
@@ -122,7 +121,7 @@
 
         // check for line clears starting from the bottom and working our way up
         for (let row = playfield.length - 1; row >= 0; ) {
-          if (playfield[row].every(cell => !!cell)) {
+          if (playfield[row].every((cell) => !!cell)) {
             // drop every row above this one
             for (let r = row; r >= 0; r--) {
               playfield[r] = playfield[r - 1];
@@ -173,13 +172,41 @@
       // how to draw each tetromino
       // @see https://tetris.fandom.com/wiki/SRS
       const tetrominos = {
-        I: [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
-        J: [[1, 0, 0], [1, 1, 1], [0, 0, 0]],
-        L: [[0, 0, 1], [1, 1, 1], [0, 0, 0]],
-        O: [[1, 1], [1, 1]],
-        S: [[0, 1, 1], [1, 1, 0], [0, 0, 0]],
-        Z: [[1, 1, 0], [0, 1, 1], [0, 0, 0]],
-        T: [[0, 1, 0], [1, 1, 1], [0, 0, 0]]
+        I: [
+          [0, 0, 0, 0],
+          [1, 1, 1, 1],
+          [0, 0, 0, 0],
+          [0, 0, 0, 0],
+        ],
+        J: [
+          [1, 0, 0],
+          [1, 1, 1],
+          [0, 0, 0],
+        ],
+        L: [
+          [0, 0, 1],
+          [1, 1, 1],
+          [0, 0, 0],
+        ],
+        O: [
+          [1, 1],
+          [1, 1],
+        ],
+        S: [
+          [0, 1, 1],
+          [1, 1, 0],
+          [0, 0, 0],
+        ],
+        Z: [
+          [1, 1, 0],
+          [0, 1, 1],
+          [0, 0, 0],
+        ],
+        T: [
+          [0, 1, 0],
+          [1, 1, 1],
+          [0, 0, 0],
+        ],
       };
 
       // color of each tetromino
@@ -190,7 +217,7 @@
         S: "#CA2171",
         Z: "#1563ff",
         J: "#00ACFF",
-        L: "white"
+        L: "white",
       };
 
       let count = 0;
@@ -249,7 +276,7 @@
       }
 
       // listen to keyboard events to move the active tetromino
-      document.addEventListener("keydown", function(e) {
+      document.addEventListener("keydown", function (e) {
         if (gameOver) return;
 
         // left and right arrow keys (move)
