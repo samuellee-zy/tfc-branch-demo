@@ -144,3 +144,16 @@ resource "aws_instance" "foo" {
     env = "main"
   }
 }
+
+#### Continuous Validation ####
+
+check "health_check" {
+  data "http" "terramino" {
+    url = "http://${aws_s3_bucket_website_configuration.s3_bucket.website_endpoint}/index.html"
+  }
+
+  assert {
+    condition = data.http.terramino.status_code == 200
+    error_message = "${data.http.terramino.url} returned an unhealthy status code"
+  }
+}
