@@ -141,6 +141,6 @@ resource "aws_instance" "foo" {
 
   tags = {
     Name = "sam-tfc-demo"
-    env = "dev"
+    env = "main"
   }
 }
